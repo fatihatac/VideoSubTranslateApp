@@ -26,11 +26,8 @@ input {
   margin-bottom: 20px;
 }
 
-.controls {
-  border: 1px solid white;
-  border-radius: 5px;
-  padding: 20px;
-}
+
+
 
 .video-container {
   position: fixed;
