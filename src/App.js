@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState, useRef } from "react";
+
+import FileInput from "./components/FileInput";
+import SubtitleDisplay from "./components/SubtitleDisplay";
+import VideoPlayer from "./components/VideoPlayer";
 
 function App() {
+  const [videoFile, setVideoFile] = useState(null);
+  const [subFile, setSubFile] = useState(null);
+  const [subtitles, setSubtitles] = useState([]);
+  const [currentSubtitle, setCurrentSubtitle] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const playerRef = useRef(null);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!videoFile && (
+        <FileInput
+          setVideoFile={setVideoFile}
+          setSubtitles={setSubtitles}
+          setSubFile={setSubFile}
+        />
+      )}
+      {videoFile && (
+        <VideoPlayer
+          videoFile={videoFile}
+          isPlaying={isPlaying}
+          setCurrentSubtitle={setCurrentSubtitle}
+          subtitles={subtitles}
+          playerRef={playerRef}
+        />
+      )}
+      {subFile && currentSubtitle && (
+        <SubtitleDisplay
+          currentSubtitle={currentSubtitle}
+          setIsPlaying={setIsPlaying}
+        />
+      )}
     </div>
   );
 }
