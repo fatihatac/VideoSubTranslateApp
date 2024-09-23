@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import FileInput from "./components/FileInput";
 import SubtitleDisplay from "./components/SubtitleDisplay";
@@ -15,14 +15,13 @@ function App() {
 
   return (
     <div className="App">
-      {!videoFile && (
-        <FileInput
-          setVideoFile={setVideoFile}
-          setSubtitles={setSubtitles}
-          setSubFile={setSubFile}
-        />
-      )}
-      {videoFile && (
+      <FileInput
+        setVideoFile={setVideoFile}
+        setSubtitles={setSubtitles}
+        setSubFile={setSubFile}
+      />
+
+      {videoFile && subFile && (
         <VideoPlayer
           videoFile={videoFile}
           isPlaying={isPlaying}

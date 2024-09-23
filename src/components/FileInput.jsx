@@ -33,8 +33,18 @@ function FileInput({ setSubFile, setSubtitles, setVideoFile }) {
   return (
     <div className="video-container">
       <div className="controls">
-        <Input type="file" accept="video/*" onChange={handleVideoFileChange} />
-        <Input type="file" accept=".srt" onChange={handleSubtitleFileUpload} />
+        <Input
+          type="file"
+          fileType="video"
+          accept="video/*"
+          onChange={handleVideoFileChange}
+        />
+        <Input
+          type="file"
+          fileType="sub"
+          accept=".srt"
+          onChange={handleSubtitleFileUpload}
+        />
       </div>
     </div>
   );
